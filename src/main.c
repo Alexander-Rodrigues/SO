@@ -6,21 +6,24 @@
 #include <fcntl.h>
 #include <dataStructs.h>
 
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        printf("Use ./program <filepath>\n");
-        return 0;
+#define SIZE 256
+
+int main(int argc, char *argv[])
+{
+    if(argc < 2)
+    {
+        printf("Arguments Missing! Use ./program <filepath>\n");
+        return -1;
     }
     int fil = open(argv[1], O_RDWR);
-    if (fil < 0) {
-        perror("Error opening file");
-        return fil;
+    if(fil < 0) {perror("Error opening file!"); return fil;}
+    int n = 1;
+    char buf[SIZE];
+    while (n > 0)
+    {
+        n = read(fil, buf, SIZE);
+        write(1, buf, n);
     }
-    int n = 1; char buf[256] = "";
-    while (n > 0) {
-        n = read(fil,buf,256);
-        write(1,buf,n);
-        printf("jg\n");
-    }
-    //int fil = open(argv[1])
+    if(n<0) {perror("Error reading file!"); return n;}
+    return 0;
 }
