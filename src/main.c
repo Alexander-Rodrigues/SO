@@ -6,10 +6,14 @@
 #include <fcntl.h>
 #include <dataStructs.h>
 
-int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        printf("Use ./program <filepath>\n");
-        return 0;
+#define SIZE 256
+
+int main(int argc, char *argv[])
+{
+    if(argc < 2)
+    {
+        printf("Arguments Missing! Use ./program <filepath>\n");
+        return -1;
     }
     int fil = open(argv[1], O_RDWR);
     if (fil < 0) {
