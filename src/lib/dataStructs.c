@@ -41,10 +41,31 @@ void thing_free(gpointer data) {
     free(t);
 }
 
+void thing_print(gpointer data, gpointer user_data) {
+    THING t = (THING)data;
+    printf("Ref: %d\nParams: %s\nOutPut: %s\n", t -> ref, t -> params, t -> output);
+}
+
 LIST list_new () {
     LIST l = malloc(sizeof(struct list));
     l -> array = g_ptr_array_new_with_free_func(thing_free);
     return l;
+}
+
+LIST list_load(LIST l, char* dump){
+    return NULL;
+}
+
+void list_add(LIST l, int ref, char * params, char * output) {
+    g_ptr_array_add(l -> array, thing_new(ref,params,output));
+}
+
+void list_print(LIST l) {
+    g_ptr_array_foreach(l -> array, thing_print, NULL);
+}
+
+void list_clean(LIST l) {
+    g_ptr_array_free(l -> array, TRUE);
 }
 
 void test() {
@@ -55,19 +76,6 @@ void test() {
 
 }
 
-void list_add(LIST l, int ref, char * params, char * output) {
-    g_ptr_array_add(l -> array, thing_new(ref,params,output));
-}
-
-void thing_print(gpointer data, gpointer user_data) {
-    THING t = (THING)data;
-    printf("Ref: %d\nParams: %s\nOutPut: %s\n", t -> ref, t -> params, t -> output);
-}
-
-void list_print(LIST l) {
-    g_ptr_array_foreach(l -> array, thing_print, NULL);
-}
-
 LIST example (LIST l) {
     THING t = thing_new(0,"ls",NULL);
     g_ptr_array_add(l -> array,t);
@@ -76,12 +84,4 @@ LIST example (LIST l) {
     THING t3 = thing_new(1,"head -1",NULL);
     g_ptr_array_add(l -> array,t3);
     return l;
-}
-
-LIST list_load(LIST l, char* dump){
-    return NULL;
-}
-
-void list_clean(LIST l) {
-    g_ptr_array_free(l -> array, TRUE);
 }
