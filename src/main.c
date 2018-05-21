@@ -16,11 +16,8 @@ int main(int argc, char *argv[]) {
         perror("Error opening file");
         return fil;
     }
-    int n = 1; char buf[256] = "";
-    while (n > 0) {
-        n = read(fil,buf,256);
-        write(1,buf,n);
-        printf("jg\n");
-    }
-    //int fil = open(argv[1])
+    LIST l = list_new();
+    l = example(l);
+    list_print(l);
+
 }
