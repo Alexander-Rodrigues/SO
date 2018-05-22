@@ -29,4 +29,4 @@ clean:
 	rm program
 
 doxy:
-	doxygen hello
+	doxygen doxy

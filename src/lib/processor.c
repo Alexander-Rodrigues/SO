@@ -1,3 +1,5 @@
+/** @file */
+
 #include <stdlib.h>
 #include <gmodule.h>
 #include <string.h>
@@ -12,20 +14,26 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int list_process(LIST l) {
+/**
+ * Processes l, fillin all output fields
+ * @param  l a LIST
+ * @return   and int indicating how the process went
+ * /note hello
+ */
+int list_process(LIST list) {
     int pid, status, n;
     int pd[2];
     pipe(pd);
     int fd;
-    char buf[50];
+    char buf[1024];
     fd = open("tmp",O_WRONLY|O_CREAT|O_TRUNC,S_IRWXO|S_IRWXU);
     write(fd,"12345",5);
 
-    for (int i = 0; i < list_size(l); i++) {
-        THING t = list_get_thing(l,i);
+    for (int i = 0; i < list_size(list); i++) {
+        THING t = list_get_thing(list,i);
         fd = open("tmp",O_WRONLY|O_TRUNC);
         if (thing_get_ref(t) > 0) {
-            THING t2 = list_get_thing(l,i - thing_get_ref(t));
+            THING t2 = list_get_thing(list,i - thing_get_ref(t));
             char *output = thing_get_output(t2);
             write(fd, output,strlen(output));
         }
@@ -41,13 +49,12 @@ int list_process(LIST l) {
             execl("/bin/sh", "sh", "-c",thing_get_params(t), (char *) 0);
         }
         wait(NULL);
-        n = read(pd[0],buf,50);
+        n = read(pd[0],buf,1024);
         close(fd);
         char *c = malloc(n);
         c = strncpy(c,buf,n);
         c[n] = '\0';
-        list_set_thing_output(l,i,c);
-        write(1,buf,n);
+        list_set_thing_output(list,i,c);
     }
     remove("tmp");
     return 0;
