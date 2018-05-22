@@ -13,68 +13,42 @@
 #include <fcntl.h>
 
 int list_process(LIST l) {
-    int pid, status;
-    int fd = open("tmp",O_RDWR);
-
-    int pd[2];
-    pipe(pd);
-    pid = fork();
-    if (pid == 0) {
-        dup2(fd,0);
-        char buf[20];
-        int n = read(fd,buf,20);
-        write(1,buf,n);
-    }
-    wait(NULL);
-    return 0;
-}
-
-int list_process2(LIST l) {
     int pid, status, n;
     int pd[2];
     pipe(pd);
     int fd;
-    remove("tmp");
-    if (l == NULL) return -1;
+    char buf[50];
+    fd = open("tmp",O_WRONLY|O_CREAT|O_TRUNC,S_IRWXO|S_IRWXU);
+    write(fd,"12345",5);
+
     for (int i = 0; i < list_size(l); i++) {
         THING t = list_get_thing(l,i);
-        fd = open("tmp",O_CREAT|O_RDWR|O_TRUNC|O_EXCL);
-        if (fd < 0) {
-            perror("Error creating tmp file");
-            return fd;
+        fd = open("tmp",O_WRONLY|O_TRUNC);
+        if (thing_get_ref(t) > 0) {
+            THING t2 = list_get_thing(l,i - thing_get_ref(t));
+            char *output = thing_get_output(t2);
+            write(fd, output,strlen(output));
         }
-        write(fd,"1",1);
         pid = fork();
-
-        if (pid < 0) {
-            perror("Error forking");
-            return pid;
-        }
         if (pid == 0) {
-            dup2(pd[1],1);
+            close(fd);
+            fd = open("tmp",O_RDONLY);
             dup2(fd,0);
+            dup2(pd[1],1);
+            close(pd[1]);
             close(pd[0]);
-            char * buf = thing_get_params(t);
-            execl("/bin/sh", "sh", "-c", buf, (char *) 0);
+
+            execl("/bin/sh", "sh", "-c",thing_get_params(t), (char *) 0);
         }
-        else {
-            wait(&status);
-            if (WIFEXITED(status)) {
-                printf("[%d|%d] SUCCESS >>> %s",pid,WEXITSTATUS(status), thing_get_params(t));
-                char buff[1024];
-                n = read(pd[0],buff,1024);
-                buff[n] = '\0';
-                printf("\n<<<\n%s>>>\n",buff);
-                list_set_thing_output(l,i,buff);
-            }
-            else {
-                perror("error");
-                return -1;
-            }
-        }
-        remove("tmp");
+        wait(NULL);
+        n = read(pd[0],buf,50);
+        close(fd);
+        char *c = malloc(n);
+        c = strncpy(c,buf,n);
+        c[n] = '\0';
+        list_set_thing_output(l,i,c);
+        write(1,buf,n);
     }
-    close(pd[1]);
-    close(pd[0]);
+    remove("tmp");
     return 0;
 }

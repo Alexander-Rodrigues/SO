@@ -25,7 +25,7 @@ void noteToList(int argc, char *argv[], LIST list)
         else if(sscanf(line, "$ %[^\t\n]", command)==1) {list_add(list, 0, command, NULL,0);}
         else {printf("Invalid notebook format!\n"); exit(-1);}
     }
-    list_print(list);
+    //list_print(list);
     fclose(fil);
 }
 

@@ -90,16 +90,8 @@ THING list_get_thing(LIST l, int index) {
 }
 
 void list_set_thing_output(LIST l, int index, char * output){
-    if (index < l -> size) {
-        THING t = g_ptr_array_index(l -> array, index);
-        char *b = NULL;
-
-        if (output != NULL) {
-            b = malloc(strlen(output)+1);
-            sprintf(b, "%s", output);
-        }
-        t -> output = b;
-    }
+    THING t = g_ptr_array_index(l -> array, index);
+    t -> output = output;
 }
 
 void list_print(LIST l) {
