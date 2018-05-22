@@ -91,7 +91,6 @@ void noteToList(int argc, char *argv[], LIST list)
         	strcpy(word,"");
     	}
     }
-    list_print(list);
     fclose(fil);
 }
 

@@ -1,16 +1,34 @@
 $ ls
 >>>
-(null)
+lib
+main.c
+Makefile
+note
+note2
+obj
+program
+tmp
+
 <<<
 $| sort
 >>>
-(null)
+lib
+main.c
+Makefile
+note
+note2
+obj
+program
+tmp
+
 <<<
 $| head -1
 >>>
-(null)
+lib
+
 <<<
 $ ls | sort | head -1
 >>>
-(null)
+lib
+
 <<<
