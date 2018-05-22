@@ -5,6 +5,7 @@ typedef struct list *LIST;
 typedef struct thing *THING;
 
 THING list_get_thing(LIST l, int index);
+void list_set_thing_output(LIST l, int index, char * output);
 
 int thing_get_ref(THING t);
 char * thing_get_params(THING t);
@@ -17,6 +18,6 @@ LIST list_load(LIST l, char* dump);
 void list_free(LIST l);
 void test();
 void list_print(LIST l);
-void list_add(LIST l, int ref, char * params, char * output);
+void list_add(LIST l, int ref, char * params, char * output, int sline);
 
 #endif

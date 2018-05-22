@@ -8,9 +8,14 @@
 #include <string.h>
 #include <dataStructs.h>
 #include <transform.h>
+#include <processor.h>
 
 int main(int argc, char *argv[])
 {
-    LIST list = list_new();
-    return noteToList(argc, argv, list);
+    LIST l = list_new();
+    int r = noteToList(argc, argv, l);
+    printf("--------------------//---------------------\n\n");
+    list_process(l);
+    //list_print(l);
+    return r;
 }

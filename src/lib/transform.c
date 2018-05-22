@@ -19,10 +19,10 @@ int noteToList(int argc, char *argv[], LIST list)
     int* quantity=0;
     while(fgets(line, sizeof(line), fil) != NULL)
     {
-        if(sscanf(line, "$%d| %[^\t\n]", quantity, command)==2) {list_add(list, *quantity, command, NULL);}
-        else if(sscanf(line, "$| %[^\t\n]", command)==1) {list_add(list, 1, command, NULL);}
+        if(sscanf(line, "$%d| %[^\t\n]", quantity, command)==2) {list_add(list, *quantity, command, NULL,0);}
+        else if(sscanf(line, "$| %[^\t\n]", command)==1) {list_add(list, 1, command, NULL,0);}
         //else if(sscanf(line, "$ %[^\t\n] |", command)==1) {printf("%s\n", command);}
-        else if(sscanf(line, "$ %[^\t\n]", command)==1) {list_add(list, 0, command, NULL);}
+        else if(sscanf(line, "$ %[^\t\n]", command)==1) {list_add(list, 0, command, NULL,0);}
         else {printf("Error reading file!\n"); exit(-1);}
     }
     list_print(list);
@@ -32,5 +32,5 @@ int noteToList(int argc, char *argv[], LIST list)
 
 int listToNote(LIST list)
 {
-	
+    return 0;
 }

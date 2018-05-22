@@ -1,4 +1,2 @@
 $ ls
-$| sort
-$| head -1
-$ ls | sort | head -1
+$| cat

@@ -13,22 +13,24 @@ struct list{
 };
 
 struct thing {
+    int sline;
     int ref;
     char *params;
     char *output;
 };
 
-THING thing_new(int ref, char * params, char * output){
+THING thing_new(int ref, char * params, char * output, int sline){
     THING t = malloc(sizeof(struct thing));
     char * a = malloc(strlen(params)+1);
     sprintf(a, "%s", params);
     char *b = NULL;
 
     if (output != NULL) {
-        b = malloc(strlen(params)+1);
+        b = malloc(strlen(output)+1);
         sprintf(b, "%s", output);
     }
 
+    t -> sline = sline;
     t -> ref = ref;
     t -> params = a;
     t -> output = b;
@@ -73,9 +75,9 @@ LIST list_load(LIST l, char* dump){
     return NULL;
 }
 
-void list_add(LIST l, int ref, char * params, char * output) {
+void list_add(LIST l, int ref, char * params, char * output, int sline) {
     (l -> size)++;
-    g_ptr_array_add(l -> array, thing_new(ref,params,output));
+    g_ptr_array_add(l -> array, thing_new(ref,params,output,sline));
 }
 
 int list_size(LIST l){
@@ -84,13 +86,19 @@ int list_size(LIST l){
 
 THING list_get_thing(LIST l, int index) {
     THING t = g_ptr_array_index(l -> array, index);
-    return thing_new(t -> ref, t -> params, t -> output);
+    return thing_new(t -> ref, t -> params, t -> output, t -> sline);
 }
 
 void list_set_thing_output(LIST l, int index, char * output){
     if (index < l -> size) {
         THING t = g_ptr_array_index(l -> array, index);
-        t -> output = output;
+        char *b = NULL;
+
+        if (output != NULL) {
+            b = malloc(strlen(output)+1);
+            sprintf(b, "%s", output);
+        }
+        t -> output = b;
     }
 }
 
@@ -102,19 +110,4 @@ void list_print(LIST l) {
 void list_free(LIST l) {
     g_ptr_array_free(l -> array, TRUE);
     free(l);
-}
-
-void test() {
-    THING t = thing_new(-1,"ls",NULL);
-    LIST l = list_new();
-    g_ptr_array_add(l -> array,t);
-    list_free(l);
-
-}
-
-LIST example (LIST l) {
-    list_add(l,0,"ls",NULL);
-    list_add(l,1,"sort",NULL);
-    list_add(l,1,"head -1",NULL);
-    return l;
 }
