@@ -10,7 +10,7 @@
 #include <sys/wait.h>
 
 int list_process(LIST l) {
-    int pid, status, n;
+    int pid, status;//, n;
     int pd[2];
     pipe(pd);
     if (l == NULL) return -1;
@@ -27,7 +27,7 @@ int list_process(LIST l) {
             if (i - thing_get_ref(t) > 0) {
                 char * buf = thing_get_output(t);
                 write(pd[1],buf,strlen(buf));
-                
+
             }
         }
         wait(&status);
@@ -36,4 +36,5 @@ int list_process(LIST l) {
         }
 
     }
+    return 0;
 }
