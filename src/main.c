@@ -14,9 +14,7 @@ int main(int argc, char *argv[])
 {
     LIST list = list_new();
     noteToList(argc, argv, list);
-    list_print(list);
     list_process(list);
-    list_print(list);
     listToNote(argc, argv, list);
     return 0;
 }
