@@ -17,5 +17,6 @@ int main(int argc, char *argv[])
     list_print(list);
     list_process(list);
     list_print(list);
+    listToNote(argc, argv, list);
     return 0;
 }

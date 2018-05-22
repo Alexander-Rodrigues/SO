@@ -38,6 +38,10 @@ int list_process(LIST list) {
             write(fd, output,strlen(output));
         }
         pid = fork();
+        if (pid < 0) {
+            perror("Fork error");
+            return pid;
+        }
         if (pid == 0) {
             close(fd);
             fd = open("tmp",O_RDONLY);
@@ -48,13 +52,20 @@ int list_process(LIST list) {
 
             execl("/bin/sh", "sh", "-c",thing_get_params(t), (char *) 0);
         }
-        wait(NULL);
-        n = read(pd[0],buf,1024);
-        close(fd);
-        char *c = malloc(n);
-        c = strncpy(c,buf,n);
-        c[n] = '\0';
-        list_set_thing_output(list,i,c);
+        wait(&status);
+        if (WIFEXITED(status)) {
+            n = read(pd[0],buf,1024);
+            close(fd);
+            char *c = malloc(n);
+            c = strncpy(c,buf,n);
+            c[n] = '\0';
+            list_set_thing_output(list,i,c);
+        }
+        else {
+            printf("[%d] Error running: <%s>",pid,thing_get_params(t));
+            perror("");
+            return pid;
+        }
     }
     remove("tmp");
     return 0;
