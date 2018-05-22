@@ -6,17 +6,26 @@
 #include <stdint.h>
 #include <dataStructs.h>
 
-
+/*! \struct list
+ * \brief A list containing a GPtrArray and an int for size.
+ *
+ * Defines a list of pointers, in this case, a list of THINGs.
+ */
 struct list{
-    int size;
-    GPtrArray *array;
+    int size;/**< \brief The list's size */
+    GPtrArray *array;/**< \brief The array containg the "list" itself \detailed \n Using glib this array stores pointers to THING and grows in size as more elements are inserted. \n  <a href="https://developer.gnome.org/glib/stable/glib-Pointer-Arrays.html">GPtrArray \n \t</a>*/
 };
 
+/*! \struct thing
+    \brief A struct which houses a command's parameters, it's, if parsed, output, reference and sline value.
+
+    Defines a list of pointers, in this case, a list of THINGs.
+*/
 struct thing {
-    int sline;
-    int ref;
-    char *params;
-    char *output;
+    int sline;/**< \brief An int which indicates if the present member is part of a sequence (SameLINE) */
+    int ref;/**< \brief Indicates which thing's output this one should use as input. \detailed \n Is relative to the current position */
+    char *params;/**< \brief  The command's parameters. \detailed \n Saves the entirety of the received command, with the exception of sequences which are treated as normal commands which use the previous' output.*/
+    char *output;/**< \brief  The output after being processed by list_process"("LIST list")"*/
 };
 
 /**

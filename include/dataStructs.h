@@ -9,17 +9,6 @@
 /*! \var typedef struct thing *THING
     \brief Creates a type name for a struct thing pointer;
 */
-
-/*! \var typedef struct list *LIST
-    \brief A list containing a GPtrArray and an int for size.
-
-    Defines a list of pointers, in this case, a list of THINGs.
-*/
-/*! \var typedef struct thing *THING
-    \brief A struct which houses a command's parameters, it's, if parsed, output, reference and sline value.
-
-    Defines a list of pointers, in this case, a list of THINGs.
-*/
 #ifndef __DATA_STRUCTS__
 #define __DATA_STRUCTS__
 

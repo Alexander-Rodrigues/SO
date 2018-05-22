@@ -18,37 +18,39 @@ Include dependency graph for data\+Structs.\+c\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structlist}{list}
-\item 
+\begin{DoxyCompactList}\small\item\em A list containing a G\+Ptr\+Array and an int for size. \end{DoxyCompactList}\item 
 struct \hyperlink{structthing}{thing}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em A struct which houses a command\textquotesingle{}s parameters, it\textquotesingle{}s, if parsed, output, reference and sline value. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{data_structs_8h_a0c5c1f9da745127fb1a3ca0ce838f645}{T\+H\+I\+NG} \hyperlink{data_structs_8c_a5c1a6bff74782d4314539fc728dceb7c}{thing\+\_\+new} (int ref, char $\ast$params, char $\ast$output, int sline)
+\hyperlink{data_structs_8h_aa715de5e15fcce8d01aa142936095a38}{T\+H\+I\+NG} \hyperlink{data_structs_8c_a5c1a6bff74782d4314539fc728dceb7c}{thing\+\_\+new} (int ref, char $\ast$params, char $\ast$output, int sline)
 \item 
-int \hyperlink{data_structs_8c_a3a6534dc978fbe17afa9b961961b2a8e}{thing\+\_\+get\+\_\+ref} (\hyperlink{data_structs_8h_a0c5c1f9da745127fb1a3ca0ce838f645}{T\+H\+I\+NG} t)
+int \hyperlink{data_structs_8c_a3a6534dc978fbe17afa9b961961b2a8e}{thing\+\_\+get\+\_\+ref} (\hyperlink{data_structs_8h_aa715de5e15fcce8d01aa142936095a38}{T\+H\+I\+NG} t)
 \item 
-char $\ast$ \hyperlink{data_structs_8c_ad59f54180d452468db0789d533468e24}{thing\+\_\+get\+\_\+params} (\hyperlink{data_structs_8h_a0c5c1f9da745127fb1a3ca0ce838f645}{T\+H\+I\+NG} t)
+int \hyperlink{data_structs_8c_ae140b76dc86dc5a8cf50e3a56f6f2ef1}{thing\+\_\+get\+\_\+sline} (\hyperlink{data_structs_8h_aa715de5e15fcce8d01aa142936095a38}{T\+H\+I\+NG} t)
 \item 
-char $\ast$ \hyperlink{data_structs_8c_aa030d07d44f42c1d7e82179b43117941}{thing\+\_\+get\+\_\+output} (\hyperlink{data_structs_8h_a0c5c1f9da745127fb1a3ca0ce838f645}{T\+H\+I\+NG} t)
+char $\ast$ \hyperlink{data_structs_8c_ad59f54180d452468db0789d533468e24}{thing\+\_\+get\+\_\+params} (\hyperlink{data_structs_8h_aa715de5e15fcce8d01aa142936095a38}{T\+H\+I\+NG} t)
+\item 
+char $\ast$ \hyperlink{data_structs_8c_aa030d07d44f42c1d7e82179b43117941}{thing\+\_\+get\+\_\+output} (\hyperlink{data_structs_8h_aa715de5e15fcce8d01aa142936095a38}{T\+H\+I\+NG} t)
 \item 
 void \hyperlink{data_structs_8c_a2d5cf1f668dadd619a6adafdbc88c027}{thing\+\_\+free} (gpointer data)
 \item 
 void \hyperlink{data_structs_8c_a7071db3198cf59e3b5eb5c4f9b87636c}{thing\+\_\+print} (gpointer data, gpointer user\+\_\+data)
 \item 
-\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} \hyperlink{data_structs_8c_ab54221d594955d139687bad10cd269db}{list\+\_\+new} ()
+\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} \hyperlink{data_structs_8c_ab54221d594955d139687bad10cd269db}{list\+\_\+new} ()
 \item 
-void \hyperlink{data_structs_8c_a70d5833eb5fff25fba4e34920a2eebae}{list\+\_\+add} (\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} l, int ref, char $\ast$params, char $\ast$output, int sline)
+void \hyperlink{data_structs_8c_a70d5833eb5fff25fba4e34920a2eebae}{list\+\_\+add} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} l, int ref, char $\ast$params, char $\ast$output, int sline)
 \item 
-int \hyperlink{data_structs_8c_a126b4a3a22c17fe9f61de68ded139f6f}{list\+\_\+size} (\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} l)
+int \hyperlink{data_structs_8c_a126b4a3a22c17fe9f61de68ded139f6f}{list\+\_\+size} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} l)
 \item 
-\hyperlink{data_structs_8h_a0c5c1f9da745127fb1a3ca0ce838f645}{T\+H\+I\+NG} \hyperlink{data_structs_8c_a69b36b99caa22122502147561331ff95}{list\+\_\+get\+\_\+thing} (\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} l, int index)
+\hyperlink{data_structs_8h_aa715de5e15fcce8d01aa142936095a38}{T\+H\+I\+NG} \hyperlink{data_structs_8c_a69b36b99caa22122502147561331ff95}{list\+\_\+get\+\_\+thing} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} l, int index)
 \item 
-void \hyperlink{data_structs_8c_aea1a0c6f45a8d86668d598afe9ea7012}{list\+\_\+set\+\_\+thing\+\_\+output} (\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} l, int index, char $\ast$output)
+void \hyperlink{data_structs_8c_aea1a0c6f45a8d86668d598afe9ea7012}{list\+\_\+set\+\_\+thing\+\_\+output} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} l, int index, char $\ast$output)
 \item 
-void \hyperlink{data_structs_8c_a3451d9d2f0667d23b8a933cbfc0bf945}{list\+\_\+print} (\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} l)
+void \hyperlink{data_structs_8c_a3451d9d2f0667d23b8a933cbfc0bf945}{list\+\_\+print} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} l)
 \item 
-void \hyperlink{data_structs_8c_a30a5e7cd4343bebd0fd8e24fb0d0a0f1}{list\+\_\+free} (\hyperlink{data_structs_8h_ad11d86946c524c55becf6a82d77156c1}{L\+I\+ST} l)
+void \hyperlink{data_structs_8c_a30a5e7cd4343bebd0fd8e24fb0d0a0f1}{list\+\_\+free} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} l)
 \end{DoxyCompactItemize}
 
 
@@ -79,7 +81,7 @@ Adds an element to the list with thing\+\_\+new\char`\"{}(\char`\"{}int ref, cha
 \end{DoxyParams}
 
 
-Definition at line 118 of file data\+Structs.\+c.
+Definition at line 136 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!list\+\_\+free@{list\+\_\+free}}
 \index{list\+\_\+free@{list\+\_\+free}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -95,7 +97,7 @@ Frees a list\textquotesingle{}s memory allocation
 \end{DoxyParams}
 
 
-Definition at line 168 of file data\+Structs.\+c.
+Definition at line 186 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!list\+\_\+get\+\_\+thing@{list\+\_\+get\+\_\+thing}}
 \index{list\+\_\+get\+\_\+thing@{list\+\_\+get\+\_\+thing}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -117,7 +119,7 @@ a thing from the list /note Assumes the caller won\textquotesingle{}t acess beyo
 \end{DoxyReturn}
 
 
-Definition at line 139 of file data\+Structs.\+c.
+Definition at line 157 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!list\+\_\+new@{list\+\_\+new}}
 \index{list\+\_\+new@{list\+\_\+new}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -131,7 +133,7 @@ an empty list
 \end{DoxyReturn}
 
 
-Definition at line 103 of file data\+Structs.\+c.
+Definition at line 121 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!list\+\_\+print@{list\+\_\+print}}
 \index{list\+\_\+print@{list\+\_\+print}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -147,7 +149,7 @@ Prints a list by calling void thing\+\_\+print\char`\"{}(\char`\"{}gpointer data
 \end{DoxyParams}
 
 
-Definition at line 159 of file data\+Structs.\+c.
+Definition at line 177 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!list\+\_\+set\+\_\+thing\+\_\+output@{list\+\_\+set\+\_\+thing\+\_\+output}}
 \index{list\+\_\+set\+\_\+thing\+\_\+output@{list\+\_\+set\+\_\+thing\+\_\+output}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -169,7 +171,7 @@ Changes a thing\textquotesingle{}s output given it\textquotesingle{}s position o
 \end{DoxyParams}
 
 
-Definition at line 150 of file data\+Structs.\+c.
+Definition at line 168 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!list\+\_\+size@{list\+\_\+size}}
 \index{list\+\_\+size@{list\+\_\+size}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -188,7 +190,7 @@ list size
 \end{DoxyReturn}
 
 
-Definition at line 128 of file data\+Structs.\+c.
+Definition at line 146 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+free@{thing\+\_\+free}}
 \index{thing\+\_\+free@{thing\+\_\+free}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -204,7 +206,7 @@ Frees a thing\textquotesingle{}s memory allocation
 \end{DoxyParams}
 
 
-Definition at line 82 of file data\+Structs.\+c.
+Definition at line 100 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+get\+\_\+output@{thing\+\_\+get\+\_\+output}}
 \index{thing\+\_\+get\+\_\+output@{thing\+\_\+get\+\_\+output}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -223,7 +225,7 @@ a string with the output
 \end{DoxyReturn}
 
 
-Definition at line 72 of file data\+Structs.\+c.
+Definition at line 90 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+get\+\_\+params@{thing\+\_\+get\+\_\+params}}
 \index{thing\+\_\+get\+\_\+params@{thing\+\_\+get\+\_\+params}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -242,7 +244,7 @@ a string with parameters
 \end{DoxyReturn}
 
 
-Definition at line 62 of file data\+Structs.\+c.
+Definition at line 80 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+get\+\_\+ref@{thing\+\_\+get\+\_\+ref}}
 \index{thing\+\_\+get\+\_\+ref@{thing\+\_\+get\+\_\+ref}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -261,7 +263,26 @@ a reference number
 \end{DoxyReturn}
 
 
-Definition at line 53 of file data\+Structs.\+c.
+Definition at line 62 of file data\+Structs.\+c.
+
+\index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+get\+\_\+sline@{thing\+\_\+get\+\_\+sline}}
+\index{thing\+\_\+get\+\_\+sline@{thing\+\_\+get\+\_\+sline}!data\+Structs.\+c@{data\+Structs.\+c}}
+\subsubsection[{\texorpdfstring{thing\+\_\+get\+\_\+sline(\+T\+H\+I\+N\+G t)}{thing_get_sline(THING t)}}]{\setlength{\rightskip}{0pt plus 5cm}int thing\+\_\+get\+\_\+sline (
+\begin{DoxyParamCaption}
+\item[{{\bf T\+H\+I\+NG}}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{data_structs_8c_ae140b76dc86dc5a8cf50e3a56f6f2ef1}{}\label{data_structs_8c_ae140b76dc86dc5a8cf50e3a56f6f2ef1}
+Returns a t\textquotesingle{}s sline 
+\begin{DoxyParams}{Parameters}
+{\em t} & a pointer to the thing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an sline number 
+\end{DoxyReturn}
+
+
+Definition at line 71 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+new@{thing\+\_\+new}}
 \index{thing\+\_\+new@{thing\+\_\+new}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -289,7 +310,7 @@ a new T\+H\+I\+NG.
 \end{DoxyReturn}
 
 
-Definition at line 30 of file data\+Structs.\+c.
+Definition at line 39 of file data\+Structs.\+c.
 
 \index{data\+Structs.\+c@{data\+Structs.\+c}!thing\+\_\+print@{thing\+\_\+print}}
 \index{thing\+\_\+print@{thing\+\_\+print}!data\+Structs.\+c@{data\+Structs.\+c}}
@@ -308,5 +329,5 @@ Prints out a thing
 \end{DoxyParams}
 
 
-Definition at line 94 of file data\+Structs.\+c.
+Definition at line 112 of file data\+Structs.\+c.
 

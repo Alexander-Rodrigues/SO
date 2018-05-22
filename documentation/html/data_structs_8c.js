@@ -13,6 +13,7 @@ var data_structs_8c =
     [ "thing_get_output", "data_structs_8c.html#aa030d07d44f42c1d7e82179b43117941", null ],
     [ "thing_get_params", "data_structs_8c.html#ad59f54180d452468db0789d533468e24", null ],
     [ "thing_get_ref", "data_structs_8c.html#a3a6534dc978fbe17afa9b961961b2a8e", null ],
+    [ "thing_get_sline", "data_structs_8c.html#ae140b76dc86dc5a8cf50e3a56f6f2ef1", null ],
     [ "thing_new", "data_structs_8c.html#a5c1a6bff74782d4314539fc728dceb7c", null ],
     [ "thing_print", "data_structs_8c.html#a7071db3198cf59e3b5eb5c4f9b87636c", null ]
 ];
