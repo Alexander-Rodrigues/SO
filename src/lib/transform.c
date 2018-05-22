@@ -171,4 +171,5 @@ void listToNote(int argc, char *argv[], LIST list)
 			fprintf(fil, "<<<\n");
 		}
 	}
+    fclose(fil);
 }
