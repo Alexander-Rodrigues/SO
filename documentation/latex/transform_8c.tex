@@ -10,7 +10,8 @@
 {\ttfamily \#include $<$string.\+h$>$}\\*
 {\ttfamily \#include $<$data\+Structs.\+h$>$}\\*
 {\ttfamily \#include $<$transform.\+h$>$}\\*
-Include dependency graph for transform.\+c\+:\nopagebreak
+Include dependency graph for transform.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,6 +21,10 @@ Include dependency graph for transform.\+c\+:\nopagebreak
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \hyperlink{transform_8c_a81c76a28dc198558e047094b3b54e446}{str\+\_\+replace} (char $\ast$target, const char $\ast$needle, const char $\ast$replacement)
+\item 
+int \hyperlink{transform_8c_a59ed2a77ab9775568bb4888b3292a064}{count\+\_\+chars} (const char $\ast$string, char ch)
+\item 
 void \hyperlink{transform_8c_a41104cfc27eb72adf15afc72b19fc705}{note\+To\+List} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, \hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} \hyperlink{structlist}{list})
 \item 
 void \hyperlink{transform_8c_ac700a91d14c71a5f71c4793ecbfee12d}{list\+To\+Note} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, \hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} \hyperlink{structlist}{list})
@@ -27,6 +32,28 @@ void \hyperlink{transform_8c_ac700a91d14c71a5f71c4793ecbfee12d}{list\+To\+Note} 
 
 
 \subsection{Function Documentation}
+\index{transform.\+c@{transform.\+c}!count\+\_\+chars@{count\+\_\+chars}}
+\index{count\+\_\+chars@{count\+\_\+chars}!transform.\+c@{transform.\+c}}
+\subsubsection[{\texorpdfstring{count\+\_\+chars(const char $\ast$string, char ch)}{count_chars(const char *string, char ch)}}]{\setlength{\rightskip}{0pt plus 5cm}int count\+\_\+chars (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{char}]{ch}
+\end{DoxyParamCaption}
+)}\hypertarget{transform_8c_a59ed2a77ab9775568bb4888b3292a064}{}\label{transform_8c_a59ed2a77ab9775568bb4888b3292a064}
+Returns the number of times the char appears in the string 
+\begin{DoxyParams}{Parameters}
+{\em string} & a pointer to the string that will get counted \\
+\hline
+{\em ch} & a char to be counted in the string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an int 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file transform.\+c.
+
 \index{transform.\+c@{transform.\+c}!list\+To\+Note@{list\+To\+Note}}
 \index{list\+To\+Note@{list\+To\+Note}!transform.\+c@{transform.\+c}}
 \subsubsection[{\texorpdfstring{list\+To\+Note(int argc, char $\ast$argv[], L\+I\+S\+T list)}{listToNote(int argc, char *argv[], LIST list)}}]{\setlength{\rightskip}{0pt plus 5cm}void list\+To\+Note (
@@ -36,9 +63,18 @@ void \hyperlink{transform_8c_ac700a91d14c71a5f71c4793ecbfee12d}{list\+To\+Note} 
 \item[{{\bf L\+I\+ST}}]{list}
 \end{DoxyParamCaption}
 )}\hypertarget{transform_8c_ac700a91d14c71a5f71c4793ecbfee12d}{}\label{transform_8c_ac700a91d14c71a5f71c4793ecbfee12d}
+Turns the chosen structure L\+I\+ST into the notebook file 
+\begin{DoxyParams}{Parameters}
+{\em argc} & an int \\
+\hline
+{\em argv} & a pointer to the array of strings \\
+\hline
+{\em list} & a L\+I\+ST \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 32 of file transform.\+c.
+Definition at line 121 of file transform.\+c.
 
 \index{transform.\+c@{transform.\+c}!note\+To\+List@{note\+To\+List}}
 \index{note\+To\+List@{note\+To\+List}!transform.\+c@{transform.\+c}}
@@ -49,7 +85,38 @@ Definition at line 32 of file transform.\+c.
 \item[{{\bf L\+I\+ST}}]{list}
 \end{DoxyParamCaption}
 )}\hypertarget{transform_8c_a41104cfc27eb72adf15afc72b19fc705}{}\label{transform_8c_a41104cfc27eb72adf15afc72b19fc705}
+Turns the chosen notebook file into the structure L\+I\+ST 
+\begin{DoxyParams}{Parameters}
+{\em argc} & an int \\
+\hline
+{\em argv} & a pointer to the array of strings \\
+\hline
+{\em list} & a L\+I\+ST \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 12 of file transform.\+c.
+Definition at line 68 of file transform.\+c.
+
+\index{transform.\+c@{transform.\+c}!str\+\_\+replace@{str\+\_\+replace}}
+\index{str\+\_\+replace@{str\+\_\+replace}!transform.\+c@{transform.\+c}}
+\subsubsection[{\texorpdfstring{str\+\_\+replace(char $\ast$target, const char $\ast$needle, const char $\ast$replacement)}{str_replace(char *target, const char *needle, const char *replacement)}}]{\setlength{\rightskip}{0pt plus 5cm}void str\+\_\+replace (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{target, }
+\item[{const char $\ast$}]{needle, }
+\item[{const char $\ast$}]{replacement}
+\end{DoxyParamCaption}
+)}\hypertarget{transform_8c_a81c76a28dc198558e047094b3b54e446}{}\label{transform_8c_a81c76a28dc198558e047094b3b54e446}
+Replaces the chosen substring with another in the main string, if the substring doesn\textquotesingle{}t exist the main string doesn\textquotesingle{}t change 
+\begin{DoxyParams}{Parameters}
+{\em target} & a pointer to the main string that will get something replaced \\
+\hline
+{\em needle} & a pointer to the substring that will get replaced \\
+\hline
+{\em replacement} & a pointer to the string that will replace the substring \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file transform.\+c.
 

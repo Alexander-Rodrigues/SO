@@ -13,6 +13,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <signal.h>
+#include <sys/types.h>
+typedef void (*sighandler_t)(int);
 
 /**
  * Processes l, fillin all output fields
@@ -21,6 +24,29 @@
  * /note hello
  */
 int list_process(LIST list) {
+    int stop = 0;
+
+    void end() {
+        remove("tmp");
+        _exit(-1);
+    }
+
+    void handle_signal(int signal) {
+        switch (signal) {
+            case SIGQUIT:
+                end();
+                break;
+            case SIGINT:
+                end();
+                break;
+            default:
+                return;
+        }
+    }
+
+    signal(SIGINT,handle_signal);
+    signal(SIGQUIT,handle_signal);
+
     int pid, status, n;
     int pd[2];
     pipe(pd);
@@ -66,7 +92,10 @@ int list_process(LIST list) {
             perror("");
             return pid;
         }
+        if (stop) end();
     }
-    remove("tmp");
+    close(fd);
+    close(pd[0]);
+    close(pd[1]);
     return 0;
 }

@@ -1,5 +1,10 @@
 \hypertarget{transform_8h}{}\section{/home/zerfalex/22/so/trab/include/transform.h File Reference}
 \label{transform_8h}\index{/home/zerfalex/22/so/trab/include/transform.\+h@{/home/zerfalex/22/so/trab/include/transform.\+h}}
+
+
+Header file with functions to transform notebook data into data\+Structs data.  
+
+
 This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -16,6 +21,11 @@ void \hyperlink{transform_8h_ac700a91d14c71a5f71c4793ecbfee12d}{list\+To\+Note} 
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Header file with functions to transform notebook data into data\+Structs data. 
+
+This header files exists to ensure encapsulation and provide an A\+PI to work with data\+Structs data bases. 
+
 \subsection{Function Documentation}
 \index{transform.\+h@{transform.\+h}!list\+To\+Note@{list\+To\+Note}}
 \index{list\+To\+Note@{list\+To\+Note}!transform.\+h@{transform.\+h}}
@@ -26,9 +36,18 @@ void \hyperlink{transform_8h_ac700a91d14c71a5f71c4793ecbfee12d}{list\+To\+Note} 
 \item[{{\bf L\+I\+ST}}]{list}
 \end{DoxyParamCaption}
 )}\hypertarget{transform_8h_ac700a91d14c71a5f71c4793ecbfee12d}{}\label{transform_8h_ac700a91d14c71a5f71c4793ecbfee12d}
+Turns the chosen structure L\+I\+ST into the notebook file 
+\begin{DoxyParams}{Parameters}
+{\em argc} & an int \\
+\hline
+{\em argv} & a pointer to the array of strings \\
+\hline
+{\em list} & a L\+I\+ST \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 32 of file transform.\+c.
+Definition at line 121 of file transform.\+c.
 
 \index{transform.\+h@{transform.\+h}!note\+To\+List@{note\+To\+List}}
 \index{note\+To\+List@{note\+To\+List}!transform.\+h@{transform.\+h}}
@@ -39,7 +58,16 @@ Definition at line 32 of file transform.\+c.
 \item[{{\bf L\+I\+ST}}]{list}
 \end{DoxyParamCaption}
 )}\hypertarget{transform_8h_a41104cfc27eb72adf15afc72b19fc705}{}\label{transform_8h_a41104cfc27eb72adf15afc72b19fc705}
+Turns the chosen notebook file into the structure L\+I\+ST 
+\begin{DoxyParams}{Parameters}
+{\em argc} & an int \\
+\hline
+{\em argv} & a pointer to the array of strings \\
+\hline
+{\em list} & a L\+I\+ST \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 12 of file transform.\+c.
+Definition at line 68 of file transform.\+c.
 

@@ -127,7 +127,7 @@ Include dependency graph for transform.c:</div>
 <div class="center"><img src="transform_8c__incl.png" border="0" usemap="#_2home_2zerfalex_222_2so_2trab_2src_2lib_2transform_8c" alt=""/></div>
 <map name="_2home_2zerfalex_222_2so_2trab_2src_2lib_2transform_8c" id="_2home_2zerfalex_222_2so_2trab_2src_2lib_2transform_8c">
 <area shape="rect" id="node10" href="data_structs_8h.html" title="Header file with data structure API. " alt="" coords="770,95,870,121"/>
-<area shape="rect" id="node11" href="transform_8h.html" title="transform.h" alt="" coords="895,95,983,121"/>
+<area shape="rect" id="node11" href="transform_8h.html" title="Header file with functions to transform notebook data into dataStructs data. " alt="" coords="895,95,983,121"/>
 </map>
 </div>
 </div>
@@ -135,12 +135,52 @@ Include dependency graph for transform.c:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a81c76a28dc198558e047094b3b54e446"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transform_8c.html#a81c76a28dc198558e047094b3b54e446">str_replace</a> (char *target, const char *needle, const char *replacement)</td></tr>
+<tr class="separator:a81c76a28dc198558e047094b3b54e446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59ed2a77ab9775568bb4888b3292a064"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transform_8c.html#a59ed2a77ab9775568bb4888b3292a064">count_chars</a> (const char *string, char ch)</td></tr>
+<tr class="separator:a59ed2a77ab9775568bb4888b3292a064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41104cfc27eb72adf15afc72b19fc705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transform_8c.html#a41104cfc27eb72adf15afc72b19fc705">noteToList</a> (int argc, char *argv[], <a class="el" href="data_structs_8h.html#a02dfe73aee9a117ed44a7abc305f1066">LIST</a> <a class="el" href="structlist.html">list</a>)</td></tr>
 <tr class="separator:a41104cfc27eb72adf15afc72b19fc705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac700a91d14c71a5f71c4793ecbfee12d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transform_8c.html#ac700a91d14c71a5f71c4793ecbfee12d">listToNote</a> (int argc, char *argv[], <a class="el" href="data_structs_8h.html#a02dfe73aee9a117ed44a7abc305f1066">LIST</a> <a class="el" href="structlist.html">list</a>)</td></tr>
 <tr class="separator:ac700a91d14c71a5f71c4793ecbfee12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a59ed2a77ab9775568bb4888b3292a064"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int count_chars </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the number of times the char appears in the string </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>a pointer to the string that will get counted </td></tr>
+    <tr><td class="paramname">ch</td><td>a char to be counted in the string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an int </dd></dl>
+
+<p>Definition at line <a class="el" href="transform_8c_source.html#l00047">47</a> of file <a class="el" href="transform_8c_source.html">transform.c</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ac700a91d14c71a5f71c4793ecbfee12d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,8 +210,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Turns the chosen structure LIST into the notebook file </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>an int </td></tr>
+    <tr><td class="paramname">argv</td><td>a pointer to the array of strings </td></tr>
+    <tr><td class="paramname">list</td><td>a LIST </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="transform_8c_source.html#l00032">32</a> of file <a class="el" href="transform_8c_source.html">transform.c</a>.</p>
+<p>Definition at line <a class="el" href="transform_8c_source.html#l00121">121</a> of file <a class="el" href="transform_8c_source.html">transform.c</a>.</p>
 
 </div>
 </div>
@@ -204,8 +252,58 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Turns the chosen notebook file into the structure LIST </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>an int </td></tr>
+    <tr><td class="paramname">argv</td><td>a pointer to the array of strings </td></tr>
+    <tr><td class="paramname">list</td><td>a LIST </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="transform_8c_source.html#l00012">12</a> of file <a class="el" href="transform_8c_source.html">transform.c</a>.</p>
+<p>Definition at line <a class="el" href="transform_8c_source.html#l00068">68</a> of file <a class="el" href="transform_8c_source.html">transform.c</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a81c76a28dc198558e047094b3b54e446"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void str_replace </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>target</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>needle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>replacement</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Replaces the chosen substring with another in the main string, if the substring doesn't exist the main string doesn't change </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>a pointer to the main string that will get something replaced </td></tr>
+    <tr><td class="paramname">needle</td><td>a pointer to the substring that will get replaced </td></tr>
+    <tr><td class="paramname">replacement</td><td>a pointer to the string that will replace the substring </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="transform_8c_source.html#l00018">18</a> of file <a class="el" href="transform_8c_source.html">transform.c</a>.</p>
 
 </div>
 </div>
