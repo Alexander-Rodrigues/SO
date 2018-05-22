@@ -66,7 +66,7 @@ int thing_get_ref(THING t){
 /**
  * Returns a t's sline
  * @param  t a pointer to the thing
- * @return   an sline number
+ * @return   a sline number
  */
 int thing_get_sline(THING t){
     return t -> sline;
