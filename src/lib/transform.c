@@ -9,7 +9,7 @@
 #include <dataStructs.h>
 #include <transform.h>
 
-int noteToList(int argc, char *argv[], LIST list)
+void noteToList(int argc, char *argv[], LIST list)
 {
     if(argc<2) {printf("Arguments missing! Use ./program <filepath>\n"); exit(-1);}
     FILE* fil = fopen(argv[1], "r");
@@ -23,14 +23,42 @@ int noteToList(int argc, char *argv[], LIST list)
         else if(sscanf(line, "$| %[^\t\n]", command)==1) {list_add(list, 1, command, NULL,0);}
         //else if(sscanf(line, "$ %[^\t\n] |", command)==1) {printf("%s\n", command);}
         else if(sscanf(line, "$ %[^\t\n]", command)==1) {list_add(list, 0, command, NULL,0);}
-        else {printf("Error reading file!\n"); exit(-1);}
+        else {printf("Invalid notebook format!\n"); exit(-1);}
     }
     list_print(list);
     fclose(fil);
-    return 0;
 }
 
-int listToNote(LIST list)
+void listToNote(int argc, char *argv[], LIST list)
 {
-    return 0;
+	THING thing;
+	int ref;
+	char* output;
+	char* params;
+	int size = list_size(list);
+	if(argc<2) {printf("Arguments missing! Use ./program <filepath>\n"); exit(-1);}
+	FILE* fil = fopen(argv[1], "w");
+	if(fil==NULL) {perror("Error opening file!\n"); exit(-1);}
+	for(int i=0;i<size;i++)
+	{
+		thing = list_get_thing(list, i);
+		ref = thing_get_ref(thing);
+		params = thing_get_params(thing);
+		output = thing_get_output(thing);
+		if(ref==0)
+		{
+			fprintf(fil, "$ %s\n", params);
+		}
+		else if(ref==1)
+		{
+			fprintf(fil, "$| %s\n", params);
+		}
+		else
+		{
+			fprintf(fil, "$%d| %s\n", ref, params);
+		}
+		fprintf(fil, ">>>\n");
+		fprintf(fil, "%s\n", output);
+		fprintf(fil, "<<<\n");
+	}
 }

@@ -12,10 +12,8 @@
 
 int main(int argc, char *argv[])
 {
-    LIST l = list_new();
-    int r = noteToList(argc, argv, l);
-    printf("--------------------//---------------------\n\n");
-    list_process(l);
-    //list_print(l);
-    return r;
+    LIST list = list_new();
+    noteToList(argc, argv, list);
+    listToNote(argc, argv, list);
+    return 0;
 }
