@@ -9,6 +9,12 @@
 #include <dataStructs.h>
 #include <transform.h>
 
+/**
+ * Replaces the chosen substring with another in the main string, if the substring doesn't exist the main string doesn't change
+ * @param  target 			a pointer to the main string that will get something replaced
+ * @param  needle 			a pointer to the substring that will get replaced
+ * @param  replacement 		a pointer to the string that will replace the substring
+ */
 void str_replace(char *target, const char *needle, const char *replacement)
 {
     char buffer[1024] = { 0 };
@@ -32,6 +38,12 @@ void str_replace(char *target, const char *needle, const char *replacement)
     strcpy(target, buffer);
 }
 
+/**
+ * Returns the number of times the char appears in the string
+ * @param  string 			a pointer to the string that will get counted
+ * @param  ch 				a char to be counted in the string
+ * @return   				an int
+ */
 int count_chars(const char* string, char ch)
 {
     int count = 0;
@@ -47,6 +59,12 @@ int count_chars(const char* string, char ch)
     return count;
 }
 
+/**
+ * Turns the chosen notebook file into the structure LIST
+ * @param  argc				an int
+ * @param  argv 			a pointer to the array of strings
+ * @param  list 			a LIST
+ */
 void noteToList(int argc, char *argv[], LIST list)
 {
     if(argc<2) {printf("Arguments missing! Use ./program <filepath>\n"); exit(-1);}
@@ -94,6 +112,12 @@ void noteToList(int argc, char *argv[], LIST list)
     fclose(fil);
 }
 
+/**
+ * Turns the chosen structure LIST into the notebook file
+ * @param  argc				an int
+ * @param  argv 			a pointer to the array of strings
+ * @param  list 			a LIST
+ */
 void listToNote(int argc, char *argv[], LIST list)
 {
 	THING thing;
