@@ -56,7 +56,6 @@ int list_process(LIST list) {
     write(fd,"12345",5);
 
     for (int i = 0; i < list_size(list); i++) {
-        sleep(10);
         THING t = list_get_thing(list,i);
         fd = open("tmp",O_WRONLY|O_TRUNC);
         if (thing_get_ref(t) > 0) {

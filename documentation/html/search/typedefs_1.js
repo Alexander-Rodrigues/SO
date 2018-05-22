@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['thing',['THING',['../data_structs_8h.html#aa715de5e15fcce8d01aa142936095a38',1,'dataStructs.h']]]
+  ['sighandler_5ft',['sighandler_t',['../processor_8c.html#a754cdc0bcfffe07baa426dc252c9101a',1,'processor.c']]]
 ];

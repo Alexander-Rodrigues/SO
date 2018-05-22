@@ -11,18 +11,35 @@
 {\ttfamily \#include $<$sys/wait.\+h$>$}\\*
 {\ttfamily \#include $<$sys/stat.\+h$>$}\\*
 {\ttfamily \#include $<$fcntl.\+h$>$}\\*
-Include dependency graph for processor.\+c\+:\nopagebreak
+{\ttfamily \#include $<$signal.\+h$>$}\\*
+Include dependency graph for processor.\+c\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{processor_8c__incl}
 \end{center}
 \end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void($\ast$ \hyperlink{processor_8c_a754cdc0bcfffe07baa426dc252c9101a}{sighandler\+\_\+t}) (int)
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{processor_8c_aea6d083cebe2f047861e31facc48ae02}{list\+\_\+process} (\hyperlink{data_structs_8h_a02dfe73aee9a117ed44a7abc305f1066}{L\+I\+ST} \hyperlink{structlist}{list})
 \end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\index{processor.\+c@{processor.\+c}!sighandler\+\_\+t@{sighandler\+\_\+t}}
+\index{sighandler\+\_\+t@{sighandler\+\_\+t}!processor.\+c@{processor.\+c}}
+\subsubsection[{\texorpdfstring{sighandler\+\_\+t}{sighandler_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ sighandler\+\_\+t) (int)}\hypertarget{processor_8c_a754cdc0bcfffe07baa426dc252c9101a}{}\label{processor_8c_a754cdc0bcfffe07baa426dc252c9101a}
+
+
+Definition at line 18 of file processor.\+c.
+
 
 
 \subsection{Function Documentation}
@@ -43,5 +60,5 @@ and int indicating how the process went /note hello
 \end{DoxyReturn}
 
 
-Definition at line 23 of file processor.\+c.
+Definition at line 26 of file processor.\+c.
 
