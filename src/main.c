@@ -12,5 +12,7 @@
 int main(int argc, char *argv[])
 {
     LIST list = list_new();
-    return noteToList(argc, argv, list);
+    noteToList(argc, argv, list);
+    listToNote(argc, argv, list);
+    return 0;
 }
