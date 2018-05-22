@@ -1,4 +1,12 @@
 $ ls
-$| sort
-$| head -1
-$ ls | sort | head -1
+>>>
+lib
+main.c
+Makefile
+note
+note2
+obj
+program
+tmp
+
+<<<
