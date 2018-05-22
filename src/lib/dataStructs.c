@@ -69,7 +69,7 @@ int thing_get_ref(THING t){
  * @return   an sline number
  */
 int thing_get_sline(THING t){
-    return t -> ref;
+    return t -> sline;
 }
 
 /**

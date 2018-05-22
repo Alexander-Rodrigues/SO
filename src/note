@@ -1,3 +1,16 @@
 $ ls
+>>>
+(null)
+<<<
 $| sort
+>>>
+(null)
+<<<
 $| head -1
+>>>
+(null)
+<<<
+$ ls | sort | head -1
+>>>
+(null)
+<<<
