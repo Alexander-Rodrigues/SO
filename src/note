@@ -27,7 +27,7 @@ $| head -1
 lib
 
 <<<
-$ ls | sort | head -1
+$3| sort | head -1
 >>>
 lib
 

@@ -75,39 +75,49 @@ void noteToList(int argc, char *argv[], LIST list)
     int quantity=0;
     while(fgets(line, sizeof(line), fil) != NULL)
     {
-        if(sscanf(line, "$%d| %[^\t\n]", &quantity, command)==2) {list_add(list, quantity, command, NULL, 0);}
-        else if(sscanf(line, "$| %[^\t\n]", command)==1) {list_add(list, 1, command, NULL, 0);}
+        int ref=-1;
+        if(sscanf(line, "$%d| %[^\t\n]", &quantity, command)==2)
+        {
+            ref = quantity;//referencia fica "$ " - 0, "$| " - 1, "$n| " - n
+        }
+        else if(sscanf(line, "$| %[^\t\n]", command)==1)
+        {
+            ref = 1;//referencia fica "$ " - 0, "$| " - 1, "$n| " - n
+        }
         else if(sscanf(line, "$ %[^\t\n]", command)==1)
     	{
-    		char* remove = " | ";
-    		char* replace = "|";
-    		str_replace(command, remove, replace);
-    		int length = strlen(command);
-    		int left = count_chars(command, '|');//quantos characteres '|' existem, usado como sline em thing se for 0 é o ultimo argumento que falta porque é sempre decrementado ao adicionar um
-    		int more = 0;//referencia fica a 1 se houverem '|', ou seja, se for um sozinho fica a 0, se for um em linha só vai ficar a 0 o primeiro e a 1 o resto
-    		char word[1024];//argumentos diferentes
-    		int wordI=0;
-    		for(int i=0;i<length;i++)
-    		{
-    			if(command[i]=='|')
-    			{
-    				word[wordI]=0;
-    				list_add(list, more, word, NULL, left);
-    				strcpy(word,"");
-    				left--;
-    				more=1;
-    				wordI=0;
-    			}
-    			else
-    			{
-    				word[wordI]=command[i];
-    				wordI++;
-    			}
-    		}
-    		word[wordI]=0;
-    		list_add(list, more, word, NULL, left);
-        	strcpy(word,"");
+            ref = 0;//referencia fica "$ " - 0, "$| " - 1, "$n| " - n
     	}
+        if(ref!=-1)
+        {
+            char* remove = " | ";
+            char* replace = "|";
+            str_replace(command, remove, replace);
+            int length = strlen(command);
+            int left = count_chars(command, '|');//quantos characteres '|' existem, usado como sline em thing se for 0 é o ultimo argumento que falta porque é sempre decrementado ao adicionar um
+            char word[1024];//argumentos diferentes
+            int wordI=0;
+            for(int i=0;i<length;i++)
+            {
+                if(command[i]=='|')
+                {
+                    word[wordI]=0;
+                    list_add(list, ref, word, NULL, left);
+                    strcpy(word,"");
+                    left--;
+                    ref=1;
+                    wordI=0;
+                }
+                else
+                {
+                    word[wordI]=command[i];
+                    wordI++;
+                }
+            }
+            word[wordI]=0;
+            list_add(list, ref, word, NULL, left);
+            strcpy(word,"");
+        }
     }
     fclose(fil);
 }
@@ -156,7 +166,18 @@ void listToNote(int argc, char *argv[], LIST list)
 		}
 		else
 		{
-			fprintf(fil, "$ %s", params);
+            if(ref==0)
+            {
+                fprintf(fil, "$ %s", params);
+            }
+            else if(ref==1)
+            {
+                fprintf(fil, "$| %s", params);
+            }
+            else
+            {
+                fprintf(fil, "$%d| %s", ref, params);
+            }
 			while(sline>0)
 			{
 				i++;
