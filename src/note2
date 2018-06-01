@@ -1,12 +1,4 @@
 $ ls
->>>
-lib
-main.c
-Makefile
-note
-note2
-obj
-program
-tmp
-
-<<<
+$| sort
+$| head -1
+$3| sort | head -1

@@ -97,5 +97,6 @@ int list_process(LIST list) {
     close(fd);
     close(pd[0]);
     close(pd[1]);
+    remove("tmp");
     return 0;
 }
