@@ -16,5 +16,5 @@ int main(int argc, char *argv[])
     noteToList(argc, argv, list);
     list_process(list);
     listToNote(argc, argv, list);
-    return 0;
+    return 1;
 }
