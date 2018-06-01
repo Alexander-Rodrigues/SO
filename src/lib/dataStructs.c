@@ -59,7 +59,7 @@ THING thing_new(int ref, char * params, char * output, int sline, char * comment
     t -> ref = ref;
     t -> params = a;
     t -> output = b;
-    t -> comment = NULL;
+    t -> comment = comment;
     return t;
 }
 

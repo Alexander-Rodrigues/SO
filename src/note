@@ -1,34 +1,3 @@
+idk
 $ ls
->>>
-lib
-main.c
-Makefile
-note
-note2
-obj
-program
-tmp
-
-<<<
-$| sort
->>>
-lib
-main.c
-Makefile
-note
-note2
-obj
-program
-tmp
-
-<<<
-$| head -1
->>>
-lib
-
-<<<
-$3| sort | head -1
->>>
-lib
-
-<<<
+ola

@@ -23,6 +23,7 @@ char * thing_get_output(THING t);
 
 THING list_get_thing(LIST l, int index);
 char * list_get_pre(LIST l);//pre texto do ficheiro
+void list_set_pre(LIST l, char * pre);
 void list_set_thing_output(LIST l, int index, char * output);
 int list_size(LIST l);
 LIST list_new();

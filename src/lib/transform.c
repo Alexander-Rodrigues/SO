@@ -73,6 +73,8 @@ void noteToList(int argc, char *argv[], LIST list)
     char line[1024];
     char command[1024];
     int quantity=0;
+    char* comment=malloc(1024);
+    int block=0;
     while(fgets(line, sizeof(line), fil) != NULL)
     {
         int ref=-1;
@@ -102,7 +104,8 @@ void noteToList(int argc, char *argv[], LIST list)
                 if(command[i]=='|')
                 {
                     word[wordI]=0;
-                    list_add(list, ref, word, NULL, left);
+                    list_add(list, ref, word, NULL, left, comment);
+                    strcpy(comment,"");
                     strcpy(word,"");
                     left--;
                     ref=1;
@@ -115,10 +118,27 @@ void noteToList(int argc, char *argv[], LIST list)
                 }
             }
             word[wordI]=0;
-            list_add(list, ref, word, NULL, left);
+            list_add(list, ref, word, NULL, left, comment);
+            strcpy(comment,"");
             strcpy(word,"");
         }
+        else
+        {
+            if(sscanf(line, ">>%[^\t\n]", command)==1 && strcmp(command,">")==0)
+            {
+                block=1;
+            }
+            if(block==0)
+            {
+                strcat(comment,line);
+            }
+            if(sscanf(line, "<<%[^\t\n]", command)==1 && strcmp(command,"<")==0)
+            {
+                block=0;
+            }
+        }
     }
+    list_set_pre(list, comment);
     fclose(fil);
 }
 
@@ -146,6 +166,7 @@ void listToNote(int argc, char *argv[], LIST list)
 		ref = thing_get_ref(thing);
 		params = thing_get_params(thing);
 		output = thing_get_output(thing);
+        fprintf(fil, "%s", thing_get_comment(thing));
 		if(sline==0)
 		{
 			if(ref==0)
@@ -192,5 +213,6 @@ void listToNote(int argc, char *argv[], LIST list)
 			fprintf(fil, "<<<\n");
 		}
 	}
+    fprintf(fil, "%s", list_get_pre(list));
     fclose(fil);
 }

@@ -1,4 +1,14 @@
+idk
+
 $ ls
 $| sort
+
+
 $| head -1
+
+
+
+comentario teste
+
 $3| sort | head -1
+ola
