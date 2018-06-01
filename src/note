@@ -1,3 +1,32 @@
-idk
+Este comando lista os ficheiros:
 $ ls
-ola
+>>>
+lib
+main.c
+Makefile
+note
+note2
+obj
+program
+tmp
+
+<<<
+Agora podemos ordenar estes ficheiros:
+$| sort
+>>>
+lib
+main.c
+Makefile
+note
+note2
+obj
+program
+tmp
+
+<<<
+E escolher o primeiro:
+$| head -1
+>>>
+lib
+
+<<<

@@ -59,7 +59,7 @@ THING thing_new(int ref, char * params, char * output, int sline, char * comment
     t -> ref = ref;
     t -> params = a;
     t -> output = b;
-    t -> comment = comment;
+    t -> comment = post;
     return t;
 }
 
@@ -133,7 +133,7 @@ void thing_free(gpointer data) {
  */
 void thing_print(gpointer data, gpointer user_data) {
     THING t = (THING)data;
-    printf("Ref: %d\nParams: %s\nOutPut: %s\n", t -> ref, t -> params, t -> output);
+    printf("Ref: %d\nParams: %s\nOutPut: %s\nTexto: %s\n", t -> ref, t -> params, t -> output, t-> comment);
 }
 
 /**
@@ -217,6 +217,7 @@ void list_set_thing_output(LIST l, int index, char * output){
 void list_print(LIST l) {
     printf("List size: %d\n",l -> size);
     g_ptr_array_foreach(l -> array, thing_print, NULL);
+    printf("End string > %s\n",l -> pre);
 }
 
 /**
