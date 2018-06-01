@@ -12,6 +12,7 @@
  * Defines a list of pointers, in this case, a list of THINGs.
  */
 struct list{
+    char *pre;
     int size;/**< \brief The list's size */
     GPtrArray *array;/**< \brief The array containg the "list" itself \detailed \n Using glib this array stores pointers to THING and grows in size as more elements are inserted. \n  <a href="https://developer.gnome.org/glib/stable/glib-Pointer-Arrays.html">GPtrArray \n \t</a>*/
 };
@@ -26,6 +27,7 @@ struct thing {
     int ref;/**< \brief Indicates which thing's output this one should use as input. \detailed \n Is relative to the current position */
     char *params;/**< \brief  The command's parameters. \detailed \n Saves the entirety of the received command, with the exception of sequences which are treated as normal commands which use the previous' output.*/
     char *output;/**< \brief  The output after being processed by list_process"("LIST list")"*/
+    char *comment;
 };
 
 /**
@@ -36,7 +38,7 @@ struct thing {
  * @param  sline  is part of line, 0 if head of line
  * @return        a new THING.
  */
-THING thing_new(int ref, char * params, char * output, int sline){
+THING thing_new(int ref, char * params, char * output, int sline, char * comment){
     THING t = malloc(sizeof(struct thing));
     char * a = malloc(strlen(params)+1);
     sprintf(a, "%s", params);
@@ -47,10 +49,17 @@ THING thing_new(int ref, char * params, char * output, int sline){
         sprintf(b, "%s", output);
     }
 
+    char *post = NULL;
+    if (comment != NULL) {
+        post = malloc(strlen(comment)+1);
+        sprintf(post, "%s", comment);
+    }
+
     t -> sline = sline;
     t -> ref = ref;
     t -> params = a;
     t -> output = b;
+    t -> comment = NULL;
     return t;
 }
 
@@ -83,7 +92,7 @@ char * thing_get_params(THING t){
 }
 
 /**
- * Returns a t's parameters
+ * Returns a t's output
  * @param  t a pointer to the thing
  * @return   a string with the output
  */
@@ -94,6 +103,18 @@ char * thing_get_output(THING t){
 }
 
 /**
+ * Returns a t's comments
+ * @param  t a pointer to the thing
+ * @return   a string with the output
+ * /note By comments we mean the text that appears after the command that doesnt affect output
+ */
+char * thing_get_comment(THING t){
+    if (t -> comment == NULL) return NULL;
+    char *a = malloc(strlen(t -> comment) + 1);
+    return strcpy(a,t -> comment);
+}
+
+/**
  * Frees a thing's memory allocation
  * @param data a pointer to the thing
  */
@@ -101,6 +122,7 @@ void thing_free(gpointer data) {
     THING t = (THING)data;
     free(t -> params);
     if (t -> output != NULL) free(t -> output);
+    if (t -> comment != NULL) free(t -> comment);
     free(t);
 }
 
@@ -122,6 +144,7 @@ LIST list_new () {
     LIST l = malloc(sizeof(struct list));
     l -> array = g_ptr_array_new_with_free_func(thing_free);
     l -> size = 0;
+    l -> pre = NULL;
     return l;
 }
 
@@ -133,9 +156,14 @@ LIST list_new () {
  * @param  output processed output
  * @param  sline  is part of line, 0 if head of line
  */
-void list_add(LIST l, int ref, char * params, char * output, int sline) {
+void list_add(LIST l, int ref, char * params, char * output, int sline, char * comment) {
     (l -> size)++;
-    g_ptr_array_add(l -> array, thing_new(ref,params,output,sline));
+    g_ptr_array_add(l -> array, thing_new(ref,params,output,sline,comment));
+}
+
+void list_set_pre(LIST l, char * pre){
+    char *a = malloc(strlen(pre) + 1);
+    l -> pre = strcpy(a,pre);
 }
 
 /**
@@ -148,6 +176,18 @@ int list_size(LIST l){
 }
 
 /**
+ * Returns the text at the begining of the notebook
+ * @param  l     a list pointer
+ * @return       A copy of the beginning text
+ * /note Assumes the caller won't acess beyond the size
+ */
+char * list_get_pre(LIST l) {
+    if (l -> pre == NULL) return NULL;
+    char *a = malloc(strlen(l -> pre) + 1);
+    return strcpy(a,l -> pre);
+}
+
+/**
  * Gets a thing from list from position
  * @param  l     a list pointer
  * @param  index position index
@@ -156,7 +196,7 @@ int list_size(LIST l){
  */
 THING list_get_thing(LIST l, int index) {
     THING t = g_ptr_array_index(l -> array, index);
-    return thing_new(t -> ref, t -> params, t -> output, t -> sline);
+    return thing_new(t -> ref, t -> params, t -> output, t -> sline, t -> comment);
 }
 
 /**

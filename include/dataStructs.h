@@ -17,16 +17,18 @@ typedef struct thing *THING;
 
 int thing_get_sline(THING t);
 int thing_get_ref(THING t);
+char * thing_get_comment(THING t);//pos texto do ficheiro
 char * thing_get_params(THING t);
 char * thing_get_output(THING t);
 
 THING list_get_thing(LIST l, int index);
+char * list_get_pre(LIST l);//pre texto do ficheiro
 void list_set_thing_output(LIST l, int index, char * output);
 int list_size(LIST l);
 LIST list_new();
 LIST list_load(LIST l, char* dump);
 void list_free(LIST l);
 void list_print(LIST l);
-void list_add(LIST l, int ref, char * params, char * output, int sline);
+void list_add(LIST l, int ref, char * params, char * output, int sline, char * comment);
 
 #endif
