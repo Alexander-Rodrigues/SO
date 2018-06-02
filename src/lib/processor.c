@@ -17,6 +17,8 @@
 #include <sys/types.h>
 typedef void (*sighandler_t)(int);
 
+#define MAXSIZE 1024
+
 /**
  * Processes l, fillin all output fields
  * @param  l a LIST
@@ -24,20 +26,20 @@ typedef void (*sighandler_t)(int);
  * /note hello
  */
 int list_process(LIST list) {
-    int stop = 0;
 
-    void end() {
+    void end(int c) {
         remove("tmp");
-        _exit(-1);
+        list_free(list);
+        _exit(c);
     }
 
     void handle_signal(int signal) {
         switch (signal) {
             case SIGQUIT:
-                end();
+                end(signal);
                 break;
             case SIGINT:
-                end();
+                end(signal);
                 break;
             default:
                 return;
@@ -51,14 +53,18 @@ int list_process(LIST list) {
     int pd[2];
     pipe(pd);
     int fd;
-    char buf[1024];
+    char buf[MAXSIZE];
     fd = open("tmp",O_WRONLY|O_CREAT|O_TRUNC,S_IRWXO|S_IRWXU);
-    write(fd,"12345",5);
+    write(fd,"spaghett",8);
 
     for (int i = 0; i < list_size(list); i++) {
         THING t = list_get_thing(list,i);
         fd = open("tmp",O_WRONLY|O_TRUNC);
         if (thing_get_ref(t) > 0) {
+            if (i - thing_get_ref(t)) {
+                fprintf(stderr,"[%d]Error: Invalid Acess: Command: <%s>, number %d tried reaching %d steps back.\n",getpid(),strtok(thing_get_params(t), " "),i+1,thing_get_ref(t));
+                end(1);
+            }
             THING t2 = list_get_thing(list,i - thing_get_ref(t));
             char *output = thing_get_output(t2);
             write(fd, output,strlen(output));
@@ -80,7 +86,11 @@ int list_process(LIST list) {
         }
         wait(&status);
         if (WIFEXITED(status)) {
-            n = read(pd[0],buf,1024);
+            if (WEXITSTATUS(status) != 0) {
+                fprintf(stderr,"[%d]Error: Exited unsuccessfully: Command: <%s>, number %d with pid [%d]\n",getpid(),strtok(thing_get_params(t), " "),i+1,pid);
+                end(WEXITSTATUS(status));
+            }
+            n = read(pd[0],buf,MAXSIZE);
             close(fd);
             char *c = malloc(n);
             c = strncpy(c,buf,n);
@@ -88,11 +98,10 @@ int list_process(LIST list) {
             list_set_thing_output(list,i,c);
         }
         else {
-            printf("[%d] Error running: <%s>",pid,thing_get_params(t));
+            fprintf(stderr,"[%d]Error: Exited unsuccessfully: Command: <%s>, number %d with pid [%d]\n",getpid(),strtok(thing_get_params(t), " "),i+1,pid);
             perror("");
             return pid;
         }
-        if (stop) end();
     }
     close(fd);
     close(pd[0]);

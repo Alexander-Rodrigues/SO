@@ -1,1 +1,36 @@
-$lsfe
+$ ls
+>>>
+documentation
+include
+Makefile
+notebook
+README.TXT
+relatorio.pdf
+src
+tmp
+
+<<<
+$| cat
+>>>
+documentation
+include
+Makefile
+notebook
+README.TXT
+relatorio.pdf
+src
+tmp
+
+<<<
+$3| cat
+>>>
+documentation
+include
+Makefile
+notebook
+README.TXT
+relatorio.pdf
+src
+tmp
+
+<<<

@@ -1,4 +1,4 @@
-notebook:
+default:
 	make program -C 'src'
 	cp src/program notebook
 
